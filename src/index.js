@@ -1,10 +1,14 @@
-import { createServer } from 'http';
+import express from 'express';
 
-const port = 3000;
+const
+    app = express(),
+    port = 3000;
 
-createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World\n');
-}).listen(port, '127.0.0.1');
+app.get('/', (req, res) => {
+    res.send('Hello World\n');
+});
 
-console.log("Server running at http://localhost:3000");
+const server = app.listen(port, () => {
+    console.log(`Server running at http://localhost:${server.address().port}`);
+});
+
